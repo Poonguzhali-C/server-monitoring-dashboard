@@ -1,0 +1,17 @@
+  services:
+
+    backend:
+      build: ./backend
+      container_name: monitor-backend
+      ports:
+        - "5000:5000"
+      env_file:
+        - ./backend/.env
+
+    frontend:
+      build: ./frontend
+      container_name: monitor-frontend
+      ports:
+        - "5173:5173"
+      depends_on:
+        - backend

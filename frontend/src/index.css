@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #0d1320; }
+  ::-webkit-scrollbar-thumb { background: #1e2d45; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2a3a55; }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-surface/60 backdrop-blur-sm border border-border/50 rounded-xl shadow-glass;
+  }
+
+  /* Glowing number display */
+  .metric-value {
+    @apply font-mono text-3xl font-semibold tabular-nums tracking-tight;
+  }
+
+  /* Sidebar nav item */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-dim text-sm font-medium
+           transition-all duration-200 cursor-pointer select-none;
+  }
+  .nav-item:hover { @apply text-bright bg-surface; }
+  .nav-item.active { @apply text-accent bg-accent/10 border border-accent/20; }
+
+  /* Status pill */
+  .status-pill {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent via-cyan to-accent2 bg-clip-text text-transparent;
+  }
+  .border-gradient {
+    border-image: linear-gradient(135deg, #3b82f6, #22d3ee) 1;
+  }
+  .animate-in { animation: slideUp 0.35s ease-out both; }
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #1a2235 25%, #1e2d45 50%, #1a2235 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Radial glow for SVG circles */
+.ring-glow-blue  { filter: drop-shadow(0 0 6px #3b82f6aa); }
+.ring-glow-cyan  { filter: drop-shadow(0 0 6px #22d3eeaa); }
+.ring-glow-green { filter: drop-shadow(0 0 6px #10b981aa); }
+.ring-glow-red   { filter: drop-shadow(0 0 6px #f43f5eaa); }
