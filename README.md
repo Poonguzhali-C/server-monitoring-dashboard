@@ -1,7 +1,7 @@
 ## Architecture
 
 <p align="center">
-<img src="images/docker-workflow.png" width="400">
+<img src="images/docker_workflow.png" width="400">
 </p>
 
 ## Workflow
